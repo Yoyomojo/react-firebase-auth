@@ -10,7 +10,6 @@ Included is a file named .env.example which includes items for your Firebase pro
 
 **.env.example**
 
-
 REACT_APP_SITE_NAME=Site Name
 
 REACT_APP_DEFAULT_AVATAR_URL=/img/react-logo.png
@@ -57,11 +56,7 @@ REACT_APP_USER_SETTINGS_ROUTE=/settings
 
 
 ### 2. Update Your Firebase Firestore Rules for the Users Table and Admin privileges and usernames table
-
-rules_version = '2';
-
-service cloud.firestore {
-
+```
   match /databases/{database}/documents {
 
     match /users/{userId} {
@@ -93,19 +88,19 @@ service cloud.firestore {
     }
 
   }
-}
+```
 
 ### 3. Run Yarn
 
 This app uses the following packages:
 
-- "bootstrap": "^5.0.2"
+- "bootstrap": "^5.2.0-beta1"
 
 - "firebase": "^9.9.0"
 
-- "react-router-dom": "^6.0.2"
+- "react-router-dom": "^6.3.0"
 
-- "styled-components": "^5.3.0"
+- "styled-components": "^5.3.5"
 
   
 

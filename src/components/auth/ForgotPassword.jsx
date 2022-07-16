@@ -20,7 +20,7 @@ const ForgotPassword = () => {
     return (
         <>
             <div className='row'>
-                <div className='col-xl-3 col-lg-6 col-sm-12 col-xs-12 ms-auto me-auto'>
+                <div className='col-xl-5 col-lg-6 col-sm-12 col-xs-12 ms-auto me-auto'>
                     <div className='card border-dark mb-3'>
                         <div className='card-header'>Reset Password</div>
                         <div className='card-body text-dark'>
