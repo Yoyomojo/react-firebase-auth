@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { useNavigate } from 'react-router';
 
 const useLoginUser = () => {

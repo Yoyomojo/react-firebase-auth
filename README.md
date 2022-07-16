@@ -21,8 +21,6 @@ REACT_APP_API_KEY=
 
 REACT_APP_AUTH_DOMAIN=
 
-REACT_APP_DATABASE_URL=
-
 REACT_APP_PROECT_ID=
 
 REACT_APP_STORAGE_BUCKET=
@@ -60,43 +58,27 @@ REACT_APP_USER_SETTINGS_ROUTE=/settings
 
 ### 2. Update Your Firebase Firestore Rules for the Users Table and Admin privileges and usernames table
 
-  rules_version = '2';
-
-  service cloud.firestore {
-
-    match /databases/{database}/documents {
-
-      match /users/{userId} {
-
-        allow read: if request.auth != null || request.auth == null;
-
-        allow delete: if request.auth != null && request.auth.uid == userId;
-
-        allow create: if request.auth != null;
-
-        // don't let users update active or role to be different from what is there already
-
-        allow update: if request.auth.uid == userId && (!request.resource.data.diff(resource.data).affectedKeys()
-          .hasAny(['active', 'role']));
-
-        // admins can edit all users info
-        allow create, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'YourAdminRole';
-
-      }
-
-      match /usernames/{document=**} {
-
-        allow create: if request.auth != null;
-
-        allow read: if request.auth != null || request.auth == null;
-
-        allow read, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'YourAdminRole';
-
-      }
-
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if request.auth != null || request.auth == null;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null;
+      // don't let users update active or role to be different from what is there already
+      allow update: if request.auth.uid == userId && (!request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['active', 'role']));
+      // admins can edit all users info
+      allow create, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'YourAdminRole';
     }
 
+    match /usernames/{document=**} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null || request.auth == null;
+      allow read, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'YourAdminRole';
+    }
   }
+}
 
 ### 3. Run Yarn
 
@@ -104,7 +86,7 @@ This app uses the following packages:
 
 - "bootstrap": "^5.0.2"
 
-- "firebase": "^8.7.1"
+- "firebase": "^9.9.0"
 
 - "react-router-dom": "^6.0.2"
 
