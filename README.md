@@ -97,7 +97,7 @@ match /b/{bucket}/o {
     	allow read: if request.auth == null || request.auth != null;
       allow create: if request.auth != null;
       allow delete: if request.auth != null && request.auth.uid == userId;
-      allow read, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      allow read, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'YourAdminRole';
     }
   }
 ```
