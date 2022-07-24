@@ -130,7 +130,7 @@ const UserInformation = () => {
                                         </div>
                                     </div>
                                     <div className='row'>
-                                        <div className='text-center'>
+                                        <div className='col text-center'>
                                             <Button
                                                 inputType='submit'
                                                 inputName='submitUserInfoForm'

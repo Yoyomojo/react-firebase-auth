@@ -90,6 +90,18 @@ REACT_APP_USER_SETTINGS_ROUTE=/settings
   }
 ```
 
+### 2. Update Your Firebase Storage Rules for user avatar uploads
+```
+match /b/{bucket}/o {
+    match /userAvatars/{userId}/{document=**} {
+    	allow read: if request.auth == null || request.auth != null;
+      allow create: if request.auth != null;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+      allow read, update, delete: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+  }
+```
+
 ### 3. Run Yarn
 
 This app uses the following packages:

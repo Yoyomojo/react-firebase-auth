@@ -1,6 +1,7 @@
 import DeleteAccount from "./DeleteAccount";
 import ProfilePrivacy from "./ProfilePrivacy";
 import UpdateUserPassword from "./UpdateUserPassword";
+import UploadAvatar from "./UploadAvatar";
 import UserInformation from "./UserInformation";
 
 const UserSettings = () => {
@@ -14,6 +15,7 @@ const UserSettings = () => {
         </div>
         <div className='row'>
             <div className='col'>
+                <UploadAvatar />
                 <ProfilePrivacy />
                 <UserInformation />
                 <UpdateUserPassword />

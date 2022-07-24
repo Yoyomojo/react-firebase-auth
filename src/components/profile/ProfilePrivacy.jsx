@@ -25,7 +25,7 @@ const ProfilePrivacy = () => {
                         <p className='card-text'>Change your profile privacy.</p>
                         <div className='form-check form-switch'>
                             <input className='form-check-input' type='checkbox' id='privacyToggle' name='privacyToggle' defaultChecked={!!privacy} onChange={togglePrivacy} />
-                            <label className='form-check-label' htmlFor='privacyToggle'>Make Profile Private</label>
+                            <label className='form-check-label' htmlFor='privacyToggle'>{privacy ? 'Make Profile Public' : 'Make Profile Private'}</label>
                         </div>
                     </div>
                 </div>
