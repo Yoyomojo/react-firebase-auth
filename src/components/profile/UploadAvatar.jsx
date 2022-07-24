@@ -1,7 +1,7 @@
-import Button from '../form/Button';
 import useUploadAvatar from '../../api/profile/uploadAvatar';
-import SuccessAlert from '../alerts/SuccessAlert';
 import ErrorAlert from '../alerts/ErrorAlert';
+import SuccessAlert from '../alerts/SuccessAlert';
+import Button from '../form/Button';
 
 const UploadAvatar = () => {
     const { uploadUsersAvatar, selectImage, avatarError, avatarSuccess, imagePreview, submitDisabled, user } = useUploadAvatar();
@@ -15,12 +15,12 @@ const UploadAvatar = () => {
                         <div className='row'>
                             <div className='col'>
                                 {avatarSuccess.success ?
-                                    <SuccessAlert alertMessage={avatarSuccess.success}/>
+                                    <SuccessAlert alertMessage={avatarSuccess.success} />
                                     :
                                     null
                                 }
                                 {avatarError.error ?
-                                    <ErrorAlert alertMessage={avatarError.error}/>
+                                    <ErrorAlert alertMessage={avatarError.error} />
                                     :
                                     null
                                 }

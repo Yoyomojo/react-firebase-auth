@@ -15,41 +15,50 @@ const useDeleteAccount = () => {
         const oldEmail = user.email;
         const currentPassword = document.getElementById('deleteUserPassword').value.trim();
 
-        await firebase.auth().signInWithEmailAndPassword(oldEmail, currentPassword)
-            .then(() => {
-                const currUser = firebase.auth().currentUser;
+        const deleteAvatarFolder = firebase.storage().ref(`/userAvatars/${user.uid}`);
 
-                firebase.firestore().collection('users').doc(currUser.uid)
-                    .delete()
+        deleteAvatarFolder.listAll().then((listResults) => {
+            listResults.items.map((item) => {
+                return item.delete();
+            })
+        })
+            .then(async () => {
+                await firebase.auth().signInWithEmailAndPassword(oldEmail, currentPassword)
                     .then(() => {
-                        currUser.delete().then(() => {
-                            setDeleteAccountSuccess({ success: 'Account deleted' });
-                            setDeleteAccountError({});
-                            window.location = '/';
-                        })
+                        const currUser = firebase.auth().currentUser;
+
+                        firebase.firestore().collection('users').doc(currUser.uid)
+                            .delete()
+                            .then(() => {
+                                currUser.delete().then(() => {
+                                    setDeleteAccountSuccess({ success: 'Account deleted' });
+                                    setDeleteAccountError({});
+                                    window.location = '/';
+                                })
+                                    .catch(() => {
+                                        setDeleteAccountError({ error: 'Something went wrong deleting your account. Please try again.' });
+                                        setDeleteAccountSuccess({});
+                                    })
+                            })
                             .catch(() => {
-                                setDeleteAccountError({ error: 'Something went wrong deleting your account. Please try again.' });
-                                setDeleteAccountSuccess({});
+                                setDeleteAccountError({ error: 'An error occured deleting your account.' });
                             })
                     })
-                    .catch(() => {
-                        setDeleteAccountError({ error: 'An error occured deleting your account.' });
-                    })
-            })
-            .catch(function (error) {
-                // display error messages by type
-                switch (error.code) {
-                    case 'auth/user-not-found':
-                        break;
-                    case 'auth/wrong-password':
-                        setDeleteAccountError({ error: 'Please check your password.' });
-                        break;
-                    case 'auth/too-many-requests':
-                        setDeleteAccountError({ error: 'Too many attempts with an incorrect password. Please try again later.' });
-                        break;
-                    default:
-                        break;
-                }
+                    .catch(function (error) {
+                        // display error messages by type
+                        switch (error.code) {
+                            case 'auth/user-not-found':
+                                break;
+                            case 'auth/wrong-password':
+                                setDeleteAccountError({ error: 'Please check your password.' });
+                                break;
+                            case 'auth/too-many-requests':
+                                setDeleteAccountError({ error: 'Too many attempts with an incorrect password. Please try again later.' });
+                                break;
+                            default:
+                                break;
+                        }
+                    });
             });
     }
 
