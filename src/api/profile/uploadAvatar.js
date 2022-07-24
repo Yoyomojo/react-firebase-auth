@@ -11,7 +11,7 @@ const useUploadAvatar = () => {
     const [avatarSuccess, setAvatarSuccess] = useState({});
     const [fileExtension, setFileExtension] = useState('');
 
-    const uploadUsersAvatar = async (e) => {
+    const uploadUsersAvatar = (e) => {
         e.preventDefault();
         const fileName = user.uid + '-avatar.' + fileExtension;
         const storageRef = `userAvatars/${user.uid}/${fileName}`;

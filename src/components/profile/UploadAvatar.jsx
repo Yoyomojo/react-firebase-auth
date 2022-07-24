@@ -1,5 +1,7 @@
 import Button from '../form/Button';
 import useUploadAvatar from '../../api/profile/uploadAvatar';
+import SuccessAlert from '../alerts/SuccessAlert';
+import ErrorAlert from '../alerts/ErrorAlert';
 
 const UploadAvatar = () => {
     const { uploadUsersAvatar, selectImage, avatarError, avatarSuccess, imagePreview, submitDisabled, user } = useUploadAvatar();
@@ -13,22 +15,12 @@ const UploadAvatar = () => {
                         <div className='row'>
                             <div className='col'>
                                 {avatarSuccess.success ?
-                                    <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                        <div className='alert alert-success alert-dismissible fade show' role='alert'>
-                                            <strong>{avatarSuccess.success}</strong>
-                                            <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                        </div>
-                                    </div>
+                                    <SuccessAlert alertMessage={avatarSuccess.success}/>
                                     :
                                     null
                                 }
                                 {avatarError.error ?
-                                    <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                        <div className='alert alert-danger alert-dismissible fade show' role='alert'>
-                                            <strong>{avatarError.error}</strong>
-                                            <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                        </div>
-                                    </div>
+                                    <ErrorAlert alertMessage={avatarError.error}/>
                                     :
                                     null
                                 }
@@ -36,7 +28,7 @@ const UploadAvatar = () => {
                         </div>
                         <form id='update-user-avatar' onSubmit={uploadUsersAvatar}>
                             <div className='row mb-3'>
-                                <div className='mb -3 col-xs-12 col-sm-12 col-md-6'>
+                                <div className='mb-3 col-xs-12 col-sm-12 col-md-6'>
                                     <input type='file' id='uploadAvatar' name='uploadAvatar' accept='image/*' onChange={selectImage} />
                                 </div>
                                 <div className='col-xs-12 col-sm-12 col-md-6 text-center'>
