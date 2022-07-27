@@ -23,7 +23,7 @@ const Navigation = () => {
                             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
                                 <li className='nav-item dropdown' data-toggle='dropdown'>
                                     <NavLink className='nav-link dropdown-toggle' to='/' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                                        <img src={user.avatar ? user.avatar : process.env.REACT_APP_DEFAULT_AVATAR_URL} alt='User Avatar' className='me-2 rounded-circle img-thumbnail' width='50' height='50' /> {user.email}
+                                        <img src={user.avatar ? user.avatar : process.env.REACT_APP_DEFAULT_AVATAR_URL} alt='User Avatar' className='me-2 rounded-circle border border-5 border-dark' width='50' height='50' /> {user.email}
                                     </NavLink>
                                     <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
                                         {user && user.role === process.env.REACT_APP_ADMIN_TITLE && user.active === true ?

@@ -56,21 +56,50 @@ const useUploadAvatar = () => {
             });
     }
 
-    const selectImage = (e) => {
-        e.preventDefault();
-        if (e.target.files.length > 0) {
+    const resizeImage = (e) => {
+        if (e.target.files) {
             setSubmitDisabled(false);
+            setAvatarImage(e.target.files[0]);
+            setFileExtension(e.target.files[0].name.substring(e.target.files[0].name.lastIndexOf('.') + 1));
+            let imageFile = e.target.files[0];
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                let image = document.createElement('img');
+                image.onload = function () {
+                    let maxWidth = 300;
+                    let maxHeight = 300;
+                    let width = image.width;
+                    let height = image.height;
+
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height = height * (maxWidth / width);
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width = width * (maxHeight / height);
+                            height = maxHeight;
+                        }
+                    }
+
+                    let canvas = document.createElement('canvas');
+                    let ctx = canvas.getContext('2d');
+                    ctx.drawImage(image, 0, 0, 300, 300);
+                    let dataUrl = canvas.toDataURL(imageFile.type);
+                    document.getElementById('avatar-preview').src = dataUrl;
+                }
+                image.src = e.target.result;
+            }
+            reader.readAsDataURL(imageFile);
         } else {
             setSubmitDisabled(true);
         }
-        setAvatarImage(e.target.files[0]);
-        setAvatarImagePreview(URL.createObjectURL(e.target.files[0]));
-        setFileExtension(e.target.files[0].name.substring(e.target.files[0].name.lastIndexOf(".") + 1));
     }
 
     return {
         uploadUsersAvatar,
-        selectImage,
+        resizeImage,
         user,
         submitDisabled,
         imagePreview,
