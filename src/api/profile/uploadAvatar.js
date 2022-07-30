@@ -56,45 +56,57 @@ const useUploadAvatar = () => {
             });
     }
 
-    const resizeImage = (e) => {
+    const resizeImage = async (e) => {
         if (e.target.files) {
             setSubmitDisabled(false);
-            setAvatarImage(e.target.files[0]);
             setFileExtension(e.target.files[0].name.substring(e.target.files[0].name.lastIndexOf('.') + 1));
-            let imageFile = e.target.files[0];
-            let reader = new FileReader();
-            reader.onload = function (e) {
-                let image = document.createElement('img');
-                image.onload = function () {
-                    let maxWidth = 300;
-                    let maxHeight = 300;
-                    let width = image.width;
-                    let height = image.height;
 
-                    if (width > height) {
-                        if (width > maxWidth) {
-                            height = height * (maxWidth / width);
-                            width = maxWidth;
-                        }
-                    } else {
-                        if (height > maxHeight) {
-                            width = width * (maxHeight / height);
-                            height = maxHeight;
-                        }
-                    }
+            const formData = new FormData(document.getElementById('update-user-avatar'));
+            const photoField = formData.get('avatar-input');
+            const dataUri = await getImageData(photoField);
+            const img = document.createElement('img');
 
-                    let canvas = document.createElement('canvas');
-                    let ctx = canvas.getContext('2d');
-                    ctx.drawImage(image, 0, 0, 300, 300);
-                    let dataUrl = canvas.toDataURL(imageFile.type);
-                    document.getElementById('avatar-preview').src = dataUrl;
-                }
-                image.src = e.target.result;
-            }
-            reader.readAsDataURL(imageFile);
+            img.onload = () => {
+                const resizedDataUri = createResizedAvatar(img, 300);
+                document.querySelector('#avatar-preview').src = resizedDataUri;
+            };
+            
+            img.src = dataUri;
         } else {
             setSubmitDisabled(true);
+            setAvatarImage();
         }
+    }
+
+    const getImageData = (imageInputField) => {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                resolve(reader.result);
+            }
+
+            reader.readAsDataURL(imageInputField);
+        });
+    }
+
+    const createResizedAvatar = (img, wantedWidth) => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const aspect = img.width / img.height;
+
+        canvas.width = wantedWidth;
+        canvas.height = wantedWidth / aspect;
+
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(function(blob) {
+            const file = new File([blob], '', { type: 'image/jpeg' });
+            setAvatarImage(file);
+        }, 'image/jpeg');
+
+        return canvas.toDataURL();
     }
 
     return {
