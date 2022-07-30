@@ -70,7 +70,7 @@ const useUploadAvatar = () => {
                 const resizedDataUri = createResizedAvatar(img, 300);
                 document.querySelector('#avatar-preview').src = resizedDataUri;
             };
-            
+
             img.src = dataUri;
         } else {
             setSubmitDisabled(true);
@@ -90,18 +90,18 @@ const useUploadAvatar = () => {
         });
     }
 
-    const createResizedAvatar = (img, wantedWidth) => {
+    const createResizedAvatar = (img, imageWidth) => {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
 
         const aspect = img.width / img.height;
 
-        canvas.width = wantedWidth;
-        canvas.height = wantedWidth / aspect;
+        canvas.width = imageWidth;
+        canvas.height = imageWidth / aspect;
 
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        canvas.toBlob(function(blob) {
+        canvas.toBlob(function (blob) {
             const file = new File([blob], '', { type: 'image/jpeg' });
             setAvatarImage(file);
         }, 'image/jpeg');

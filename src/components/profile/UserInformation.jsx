@@ -30,26 +30,26 @@ const UserInformation = () => {
                     <h5 className='card-header'>Personal Information</h5>
                     <div className='card-body'>
                         <div className='row'>
-                        {accountSuccess.success ?
-                            <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                <div className='alert alert-success alert-dismissible fade show' role='alert'>
-                                    <strong>{accountSuccess.success}</strong>
-                                    <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            {accountSuccess.success ?
+                                <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                    <div className='alert alert-success alert-dismissible fade show' role='alert'>
+                                        <strong>{accountSuccess.success}</strong>
+                                        <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    </div>
                                 </div>
-                            </div>
-                            :
-                            null
-                        }
-                        {accountError.error ?
-                            <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                <div className='alert alert-danger alert-dismissible fade show' role='alert'>
-                                    <strong>{accountError.error}</strong>
-                                    <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                :
+                                null
+                            }
+                            {accountError.error ?
+                                <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                    <div className='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <strong>{accountError.error}</strong>
+                                        <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    </div>
                                 </div>
-                            </div>
-                            :
-                            null
-                        }
+                                :
+                                null
+                            }
                             <form id='update-password' onSubmit={handleUpdateAccountInfoSubmit}>
                                 <div className='col'>
                                     <div className='row mb-3'>
