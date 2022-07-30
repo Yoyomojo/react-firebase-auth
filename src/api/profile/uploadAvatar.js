@@ -10,9 +10,11 @@ const useUploadAvatar = () => {
     const [avatarError, setAvatarError] = useState({});
     const [avatarSuccess, setAvatarSuccess] = useState({});
     const [fileExtension, setFileExtension] = useState('');
+    const [isUploading, setIsUploading] = useState(false);
 
     const uploadUsersAvatar = (e) => {
         e.preventDefault();
+        setIsUploading(true);
         const fileName = user.uid + '-avatar.' + fileExtension;
         const storageRef = `userAvatars/${user.uid}/${fileName}`;
 
@@ -48,10 +50,13 @@ const useUploadAvatar = () => {
                                     })
                             })
                         setAvatarSuccess({ success: 'Your avatar has been updated.' });
+                        setAvatarError({});
+                        setIsUploading(false);
                     })
                     .catch(() => {
                         setAvatarError({ error: 'An error occurred uploading your avatar. Please try again.' });
                         setAvatarSuccess({});
+                        setIsUploading(false);
                     });
             });
     }
@@ -112,6 +117,7 @@ const useUploadAvatar = () => {
     return {
         uploadUsersAvatar,
         resizeImage,
+        isUploading,
         user,
         submitDisabled,
         imagePreview,

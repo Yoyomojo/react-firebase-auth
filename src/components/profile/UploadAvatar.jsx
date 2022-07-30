@@ -4,7 +4,7 @@ import SuccessAlert from '../alerts/SuccessAlert';
 import Button from '../form/Button';
 
 const UploadAvatar = () => {
-    const { uploadUsersAvatar, resizeImage, avatarError, avatarSuccess, submitDisabled, user } = useUploadAvatar();
+    const { uploadUsersAvatar, resizeImage, avatarError, avatarSuccess, submitDisabled, user, isUploading } = useUploadAvatar();
 
     return (
         <div className='row mb-3'>
@@ -38,12 +38,12 @@ const UploadAvatar = () => {
                             <div className='row'>
                                 <div className='col text-center'>
                                     <Button
-                                        inputDisabled={submitDisabled}
+                                        inputDisabled={submitDisabled || isUploading}
                                         inputType='submit'
                                         inputName='submitAvatarForm'
                                         inputClass='btn btn-primary btn-lg'
                                         inputID='submitAvatarForm'
-                                        inputLabel='Upload Avatar'
+                                        inputLabel={isUploading ? 'Uploading Avatar' : 'Upload Avatar'}
                                     />
                                 </div>
                             </div>
