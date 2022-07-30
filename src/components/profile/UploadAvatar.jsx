@@ -29,11 +29,10 @@ const UploadAvatar = () => {
                         <form id='update-user-avatar' onSubmit={uploadUsersAvatar}>
                             <div className='row mb-3'>
                                 <div className='mb-3 col-xs-12 col-sm-12 col-md-6'>
-                                    <input type='file' id='avatar-input' name='avatar-input' accept='image/*' onChange={resizeImage} />
+                                    <input type='file' id='avatar-input' name='avatar-input' accept='.png, .jpg, .jpeg' onChange={resizeImage} />
                                 </div>
                                 <div className='col-xs-12 col-sm-12 col-md-6 text-center'>
                                     <img id='avatar-preview' alt='avatar preview' className='img-thumbnail img-fluid' src={user.avatar} width='300'></img>
-                                    {/* <p><img className='img-thumbnail' src={imagePreview ? imagePreview : user.avatar} alt='Avatar Preview' width='150px' /></p> */}
                                 </div>
                             </div>
                             <div className='row'>
