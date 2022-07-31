@@ -17,9 +17,9 @@ const ProfilePrivacy = () => {
     }
 
     return (
-        <div className='row mb-3'>
-            <div className='col'>
-                <div className='card'>
+        <div className='row h-100'>
+            <div className='col mb-3'>
+                <div className='card h-100'>
                     <h5 className='card-header'>Profile Privacy</h5>
                     <div className='card-body'>
                         <p className='card-text'>Change your profile privacy.</p>

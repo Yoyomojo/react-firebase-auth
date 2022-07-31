@@ -1,5 +1,7 @@
 import useForm from '../../util/useForm';
 import validate from '../../util/validateForm';
+import ErrorAlert from '../alerts/ErrorAlert';
+import SuccessAlert from '../alerts/SuccessAlert';
 import Input from '../form/Input';
 
 const DeleteAccount = () => {
@@ -22,21 +24,15 @@ const DeleteAccount = () => {
                 <div className='card-body'>
                     <h4 className='card-text fw-bolder text-danger text-center mb-3'>Account deletion cannot be undone. All of your data will be removed.</h4>
                     {deleteAccountSuccess.success ?
-                        <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                            <div className='alert alert-success alert-dismissible fade show' role='alert'>
-                                <strong>{deleteAccountSuccess.success}</strong>
-                                <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                            </div>
+                        <div>
+                            <SuccessAlert alertMessage={deleteAccountSuccess.success} />
                         </div>
                         :
                         null
                     }
                     {deleteAccountError.error ?
-                        <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                            <div className='alert alert-danger alert-dismissible fade show' role='alert'>
-                                <strong>{deleteAccountError.error}</strong>
-                                <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                            </div>
+                        <div>
+                            <ErrorAlert alertMessage={deleteAccountError.error} />
                         </div>
                         :
                         null

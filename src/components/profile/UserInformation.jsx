@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { AuthContext } from '../../firebase/context';
 import useForm from '../../util/useForm';
 import validate from '../../util/validateForm';
+import ErrorAlert from '../alerts/ErrorAlert';
+import SuccessAlert from '../alerts/SuccessAlert';
 import Button from '../form/Button';
 import Input from '../form/Input';
 
@@ -24,28 +26,22 @@ const UserInformation = () => {
     };
 
     return (
-        <div className='row mb-3'>
-            <div className='col'>
-                <div className='card'>
+        <div className='row h-100'>
+            <div className='col mb-3'>
+                <div className='card h-100'>
                     <h5 className='card-header'>Personal Information</h5>
                     <div className='card-body'>
                         <div className='row'>
                             {accountSuccess.success ?
-                                <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                    <div className='alert alert-success alert-dismissible fade show' role='alert'>
-                                        <strong>{accountSuccess.success}</strong>
-                                        <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                                <div>
+                                    <SuccessAlert alertMessage={accountSuccess.success} />
                                 </div>
                                 :
                                 null
                             }
                             {accountError.error ?
-                                <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                    <div className='alert alert-danger alert-dismissible fade show' role='alert'>
-                                        <strong>{accountError.error}</strong>
-                                        <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
+                                <div>
+                                    <ErrorAlert alertMessage={accountError.error} />
                                 </div>
                                 :
                                 null
@@ -53,7 +49,7 @@ const UserInformation = () => {
                             <form id='update-password' onSubmit={handleUpdateAccountInfoSubmit}>
                                 <div className='col'>
                                     <div className='row mb-3'>
-                                        <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                        <div className='col-xs-12 col-sm-12'>
                                             <div className='row'>
                                                 <div className='col-6'>
                                                     <Input
@@ -93,7 +89,7 @@ const UserInformation = () => {
                                         </div>
                                     </div>
                                     <div className='row mb-3'>
-                                        <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                        <div className='col-xs-12 col-sm-12'>
                                             <Input
                                                 inputType='email'
                                                 inputName='infoEmail'
@@ -112,7 +108,7 @@ const UserInformation = () => {
                                         </div>
                                     </div>
                                     <div className='row mb-3'>
-                                        <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                        <div className='col-xs-12 col-sm-12'>
                                             <Input
                                                 inputType='password'
                                                 inputName='infoPassword'

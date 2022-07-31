@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import useForm from '../../util/useForm';
 import validate from '../../util/validateForm';
+import ErrorAlert from '../alerts/ErrorAlert';
+import SuccessAlert from '../alerts/SuccessAlert';
 import Button from '../form/Button';
 import Input from '../form/Input';
 
@@ -20,34 +22,28 @@ const UpdateUserPassword = () => {
     };
 
     return (
-        <div className='row mb-3'>
-            <div className='col'>
-                <div className='card'>
+        <div className='row h-100'>
+            <div className='col mb-3'>
+                <div className='card h-100'>
                     <h5 className='card-header'>Change Password</h5>
                     <div className='card-body'>
                         {passwordSuccess.success ?
-                            <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                <div className='alert alert-success alert-dismissible fade show' role='alert'>
-                                    <strong>{passwordSuccess.success}</strong>
-                                    <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>
+                            <div>
+                                <SuccessAlert alertMessage={passwordSuccess.success} />
                             </div>
                             :
                             null
                         }
                         {passwordError.error ?
-                            <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
-                                <div className='alert alert-danger alert-dismissible fade show' role='alert'>
-                                    <strong>{passwordError.error}</strong>
-                                    <button type='button' className='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                </div>
+                            <div>
+                                <ErrorAlert alertMessage={passwordError.error} />
                             </div>
                             :
                             null
                         }
                         <form id='update-user-password' onSubmit={handleUpdatePassword}>
                             <div className='row mb-3'>
-                                <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                <div className='col-xs-12 col-sm-12'>
                                     <p>For security please enter your current password. If you are having trouble you can <Link to={process.env.REACT_APP_FORGOTPASSWORD_ROUTE}>reset your password</Link> instead.</p>
                                     <Input
                                         inputType='password'
@@ -65,7 +61,7 @@ const UpdateUserPassword = () => {
                                 </div>
                             </div>
                             <div className='row mb-3'>
-                                <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                <div className='col-xs-12 col-sm-12'>
                                     <div className='mb-3'>
                                         <Input
                                             inputType='password'
@@ -85,7 +81,7 @@ const UpdateUserPassword = () => {
                                 </div>
                             </div>
                             <div className='row mb-3'>
-                                <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 ms-auto me-auto'>
+                                <div className='col-xs-12 col-sm-12'>
                                     <div className='mb-3'>
                                         <Input
                                             inputType='password'

@@ -7,21 +7,33 @@ import UserInformation from "./UserInformation";
 const UserSettings = () => {
     return (
         <>
-        <div className='row mb-3'>
-            <div className='col'>
-                <h1>Account Settings</h1>
-                <hr />
+            <div className='row mb-3'>
+                <div className='col'>
+                    <h1>Account Settings</h1>
+                    <hr />
+                </div>
             </div>
-        </div>
-        <div className='row'>
-            <div className='col'>
-                <UploadAvatar />
-                <ProfilePrivacy />
-                <UserInformation />
-                <UpdateUserPassword />
-                <DeleteAccount />
+            <div className='row'>
+                <div className='col'>
+                    <UploadAvatar />
+                </div>
+                <div className='col'>
+                    <ProfilePrivacy />
+                </div>
             </div>
-        </div>
+            <div className='row'>
+                <div className='col-xs-12 col-sm-12 col-md-6'>
+                    <UserInformation />
+                </div>
+                <div className='col-xs-12 col-sm-12 col-md-6'>
+                    <UpdateUserPassword />
+                </div>
+            </div>
+            <div className='row'>
+                <div className='col'>
+                    <DeleteAccount />
+                </div>
+            </div>
         </>
     )
 }

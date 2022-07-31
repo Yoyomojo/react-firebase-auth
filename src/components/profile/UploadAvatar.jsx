@@ -7,20 +7,24 @@ const UploadAvatar = () => {
     const { uploadUsersAvatar, resizeImage, avatarError, avatarSuccess, submitDisabled, user, isUploading } = useUploadAvatar();
 
     return (
-        <div className='row mb-3'>
-            <div className='col'>
-                <div className='card'>
+        <div className='row h-100'>
+            <div className='col mb-3'>
+                <div className='card h-100'>
                     <h5 className='card-header'>Change Avatar</h5>
                     <div className='card-body'>
                         <div className='row'>
                             <div className='col'>
                                 {avatarSuccess.success ?
-                                    <SuccessAlert alertMessage={avatarSuccess.success} />
+                                    <div>
+                                        <SuccessAlert alertMessage={avatarSuccess.success} />
+                                    </div>
                                     :
                                     null
                                 }
                                 {avatarError.error ?
-                                    <ErrorAlert alertMessage={avatarError.error} />
+                                    <div>
+                                        <ErrorAlert alertMessage={avatarError.error} />
+                                    </div>
                                     :
                                     null
                                 }
