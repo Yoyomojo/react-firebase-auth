@@ -32,6 +32,7 @@ const useUploadAvatar = () => {
                     .then(() => {
                         setAvatarError({});
                         setAvatarImage([]);
+                        setAvatarSuccess([]);
                         setAvatarImagePreview(null);
                         setSubmitDisabled(true);
                         // reset the form
