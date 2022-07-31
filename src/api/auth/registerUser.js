@@ -27,6 +27,7 @@ const useRegisterUser = () => {
                         role: process.env.REACT_APP_USER_TITLE,
                         avatar: '/img/react-logo.png',
                         active: true,
+                        theme: 'light',
                         isPrivate: false,
                         updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()

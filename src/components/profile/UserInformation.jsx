@@ -119,8 +119,8 @@ const UserInformation = () => {
                                                 inputClass='form-control'
                                                 inputID='infoPassword'
                                                 inputTabIndex='0'
-                                                inputLabel='For security please enter your password'
-                                                inputPlaceholder='Password'
+                                                inputLabel='For security please enter your current password'
+                                                inputPlaceholder='Current Password'
                                                 inputDisabled={false}
                                                 onChangeEvent={handleInputChange}
                                                 inputValue={inputs.infoPassword}

@@ -55,7 +55,7 @@ const UpdateUserPassword = () => {
                                         inputClass='form-control'
                                         inputID='currentPassword'
                                         inputTabIndex='0'
-                                        inputPlaceholder='Password'
+                                        inputPlaceholder='Current Password'
                                         inputDisabled={false}
                                         onChangeEvent={handleInputChange}
                                         inputValue={inputs.currentPassword}
@@ -93,8 +93,8 @@ const UpdateUserPassword = () => {
                                             inputClass='form-control'
                                             inputID='updateConfirmPassword'
                                             inputTabIndex='0'
-                                            inputLabel='Confirm Password'
-                                            inputPlaceholder='Password'
+                                            inputLabel='Confirm New Password'
+                                            inputPlaceholder='Confirm New Password'
                                             inputDisabled={false}
                                             onChangeEvent={handleInputChange}
                                             inputValue={inputs.updateConfirmPassword}
