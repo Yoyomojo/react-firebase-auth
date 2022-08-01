@@ -83,7 +83,7 @@ const ManageUsers = () => {
                                             </div>
                                         </td>
                                         <td>
-                                            <p><img src={user.data.avatar} alt='User Avatar' className='img-fluid border rounded-circle img-thumbnail' width='45' /></p>
+                                            <p><img src={user.data.avatar} alt='User Avatar' className='rounded-circle border border-5 border-dark mt-2' width='50' height='50' /></p>
                                             <p><button className='btn btn-primary btn-md' onClick={() => resetAvatar(user.data.uid)} disabled={user.data.avatar === process.env.REACT_APP_DEFAULT_AVATAR_URL ? true : false}>Reset Avatar</button></p>
                                         </td>
                                         <td>{user.data.uid}</td>
