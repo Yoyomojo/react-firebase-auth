@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { AuthContext } from '../../firebase/context';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../firebase/context';
 
 const Navigation = () => {
     const { user } = useContext(AuthContext);
@@ -26,15 +26,23 @@ const Navigation = () => {
                                         <img src={user.avatar ? user.avatar : process.env.REACT_APP_DEFAULT_AVATAR_URL} alt='User Avatar' className='me-2 rounded-circle border border-5 border-dark' width='50' height='50' /> {user.email}
                                     </NavLink>
                                     <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
-                                        {user && user.role === process.env.REACT_APP_ADMIN_TITLE && user.active === true ?
+                                        {user && user.active === true ?
                                             <>
-                                                <li><Link className='dropdown-item' to={process.env.REACT_APP_MANAGE_USERS_ROUTE}>Manage Users</Link></li>
+                                                <li><Link className='dropdown-item' to={'/' + user.username}>My Profile</Link></li>
                                                 <li><hr className='dropdown-divider' /></li>
+                                                <li><Link className='dropdown-item' to={process.env.REACT_APP_USER_SETTINGS_ROUTE}>Account Settings</Link></li>
                                             </>
-                                        :
+                                            :
                                             null
                                         }
-                                        <li><Link className='dropdown-item' to={process.env.REACT_APP_USER_SETTINGS_ROUTE}>Settings</Link></li>
+                                        {user && user.role === process.env.REACT_APP_ADMIN_TITLE && user.active === true ?
+                                            <>
+                                                <li><hr className='dropdown-divider' /></li>
+                                                <li><Link className='dropdown-item' to={process.env.REACT_APP_MANAGE_USERS_ROUTE}>Manage Users</Link></li>
+                                            </>
+                                            :
+                                            null
+                                        }
                                         <li><hr className='dropdown-divider' /></li>
                                         <li><Link className='dropdown-item' to={process.env.REACT_APP_LOGOUT_ROUTE}>Sign Out</Link></li>
                                     </ul>

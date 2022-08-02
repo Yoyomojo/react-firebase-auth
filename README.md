@@ -54,6 +54,8 @@ REACT_APP_MANAGE_USERS_ROUTE=/manage-users
 
 REACT_APP_USER_SETTINGS_ROUTE=/settings
 
+REACT_APP_VIEW_USER_PROFILE=/:username
+
 
 ### 2. Update Your Firebase Firestore Rules for the Users Table and Admin privileges and usernames table
 ```
