@@ -14,27 +14,43 @@ const useDeleteAccount = () => {
 
         const oldEmail = user.email;
         const currentPassword = document.getElementById('deleteUserPassword').value.trim();
+        const deleteAvatarFolder = await firebase.storage().ref(`/userAvatars/${user.uid}`);
+        const deleteUsername = await firebase.firestore().collection('usernames').where('username', '==', user.username).get();
 
-        const deleteAvatarFolder = firebase.storage().ref(`/userAvatars/${user.uid}`);
+        const batch = firebase.firestore().batch();
 
-        deleteAvatarFolder.listAll().then((listResults) => {
-            listResults.items.map((item) => {
-                return item.delete();
-            })
-        })
+        deleteUsername.forEach((doc) => {
+            batch.delete(doc.ref);
+        });
+
+        await batch.commit();
+
+        // sign the user in again and remove data
+        await firebase.auth().signInWithEmailAndPassword(oldEmail, currentPassword)
             .then(async () => {
-                await firebase.auth().signInWithEmailAndPassword(oldEmail, currentPassword)
-                    .then(() => {
+                // delete user avatar directory
+                deleteAvatarFolder.listAll()
+                    .then((listResults) => {
+                        listResults.items.map((item) => {
+                            return item.delete();
+                        })
+                    })
+                    .then(async () => {
                         const currUser = firebase.auth().currentUser;
-
-                        firebase.firestore().collection('users').doc(currUser.uid)
+                        // remove firebase user
+                        await firebase.firestore().collection('users').doc(currUser.uid)
                             .delete()
-                            .then(() => {
-                                currUser.delete().then(() => {
-                                    setDeleteAccountSuccess({ success: 'Account deleted' });
-                                    setDeleteAccountError({});
-                                    window.location = '/';
-                                })
+                            .then(async () => {
+                                await currUser.delete()
+                                    .then(() => {
+                                        setDeleteAccountSuccess({ success: 'Account deleted' });
+                                        setDeleteAccountError({});
+                                        window.location = '/';
+                                    })
+                                    .catch(() => {
+                                        setDeleteAccountError({ error: 'Something went wrong deleting your account. Please try again.' });
+                                        setDeleteAccountSuccess({});
+                                    })
                                     .catch(() => {
                                         setDeleteAccountError({ error: 'Something went wrong deleting your account. Please try again.' });
                                         setDeleteAccountSuccess({});
@@ -43,22 +59,23 @@ const useDeleteAccount = () => {
                             .catch(() => {
                                 setDeleteAccountError({ error: 'An error occured deleting your account.' });
                             })
-                    })
-                    .catch(function (error) {
-                        // display error messages by type
-                        switch (error.code) {
-                            case 'auth/user-not-found':
-                                break;
-                            case 'auth/wrong-password':
-                                setDeleteAccountError({ error: 'Please check your password.' });
-                                break;
-                            case 'auth/too-many-requests':
-                                setDeleteAccountError({ error: 'Too many attempts with an incorrect password. Please try again later.' });
-                                break;
-                            default:
-                                break;
-                        }
+
                     });
+            })
+            .catch(function (error) {
+                // display error messages by type
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        break;
+                    case 'auth/wrong-password':
+                        setDeleteAccountError({ error: 'Please check your password.' });
+                        break;
+                    case 'auth/too-many-requests':
+                        setDeleteAccountError({ error: 'Too many attempts with an incorrect password. Please try again later.' });
+                        break;
+                    default:
+                        break;
+                }
             });
     }
 

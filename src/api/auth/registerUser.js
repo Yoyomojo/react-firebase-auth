@@ -32,9 +32,8 @@ const useRegisterUser = () => {
                         updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     })
-            })
-            .then(async () => {
-                await firebase.firestore().collection('usernames').doc()
+
+                await firebase.firestore().collection('usernames').doc(user.user.uid)
                     .set({
                         username: username
                     })
