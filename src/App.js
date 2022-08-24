@@ -58,7 +58,7 @@ const UserProfile = lazy(() =>
   import('./components/profile/ViewProfile')
 );
 
-function App() {
+const App = () => {
   return (
     <AuthProvider>
       <Suspense fallback={<Loader />}>
@@ -87,13 +87,13 @@ function App() {
               <Route
                 path={process.env.REACT_APP_FORGOTPASSWORD_ROUTE}
                 element={
-                    <ForgotPassword />
+                  <ForgotPassword />
                 }
               />
               <Route
                 path={process.env.REACT_APP_VIEW_USER_PROFILE}
                 element={
-                    <UserProfile />
+                  <UserProfile />
                 }
               />
               <Route path={process.env.REACT_APP_PRIVACY_ROUTE} element={<Privacy />} />
@@ -136,6 +136,6 @@ function App() {
       </Suspense>
     </AuthProvider>
   );
-}
+};
 
 export default App;

@@ -1,5 +1,6 @@
 import DeleteAccount from "./DeleteAccount";
 import ProfilePrivacy from "./ProfilePrivacy";
+import ProfileTheme from "./ProfileTheme";
 import UpdateUserPassword from "./UpdateUserPassword";
 import UploadAvatar from "./UploadAvatar";
 import UserInformation from "./UserInformation";
@@ -18,7 +19,16 @@ const UserSettings = () => {
                     <UploadAvatar />
                 </div>
                 <div className='col'>
-                    <ProfilePrivacy />
+                    <div className='row'>
+                        <div className='col'>
+                            <ProfilePrivacy />
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col'>
+                            <ProfileTheme />
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className='row'>

@@ -7,6 +7,7 @@ import useUpdateAccountInfo from '../api/profile/updateAccountInformation';
 import useUpdateUserPassword from '../api/profile/updateUserPassword';
 import useDeleteAccount from '../api/profile/deleteUserAccount';
 import useCheckExistingUserName from '../api/auth/checkExistingUserName';
+import useToggleUserTheme from '../api/profile/toggleUserTheme';
 
 const useForm = (initialValues, validate) => {
     const [inputs, setInputs] = useState(initialValues);
@@ -15,6 +16,7 @@ const useForm = (initialValues, validate) => {
     const { accountError, accountSuccess, updateAccountInformation } = useUpdateAccountInfo();
     const { passwordSuccess, passwordError, updateUserPassword } = useUpdateUserPassword();
     const { deleteAccountSuccess, deleteAccountError, deleteUserAccount } = useDeleteAccount();
+    const { themeSuccess, themeError, toggleUserTheme} = useToggleUserTheme();
 
     // use our custom auth hooks nad pass any firebase errors in to here
     const { regError, registerUser } = useRegisterUser();
@@ -64,6 +66,17 @@ const useForm = (initialValues, validate) => {
         setErrors(validationErrors);
         if (noErrors) {
             toggleProfilePrivacy(privacy);
+        } else {
+            // Halt any submission attempt here
+        }
+    }
+
+    const handleThemeToggle = (theme) => {
+        const validationErrors = validate(inputs);
+        const noErrors = Object.keys(validationErrors).length === 0;
+        setErrors(validationErrors);
+        if (noErrors) {
+            toggleUserTheme(theme);
         } else {
             // Halt any submission attempt here
         }
@@ -121,6 +134,7 @@ const useForm = (initialValues, validate) => {
         handleUpdatePassword,
         handleDeleteUserAccount,
         checkUsername,
+        handleThemeToggle,
         accountError,
         accountSuccess,
         inputs,
@@ -136,7 +150,9 @@ const useForm = (initialValues, validate) => {
         deleteAccountSuccess,
         deleteAccountError,
         usernameSuccess,
-        usernameError
+        usernameError,
+        themeSuccess,
+        themeError
     };
 }
 
