@@ -1,0 +1,143 @@
+[33mcommit 99b3fafb5af5e5758889f1a317aee94250dd6d7d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Mark <markthedev@gmail.com>
+Date:   Thu Aug 25 07:09:30 2022 -0500
+
+    Set account active status
+
+[33mcommit 40ee272bc3476f78e45fda4adf7ef14f7914b8b5[m
+Author: Mark <markthedev@gmail.com>
+Date:   Thu Aug 25 07:08:55 2022 -0500
+
+    Set account active status
+
+[33mcommit eee0dc4d9f1aac456253616cd8fc99c4f3807777[m
+Author: Mark <markthedev@gmail.com>
+Date:   Wed Aug 24 07:06:28 2022 -0500
+
+    Begin adding in theme support for light/dark themes.
+
+[33mcommit 89b8ff060f9b07c12938b3b3972ed6a3d86c39f1[m
+Author: Mark <markthedev@gmail.com>
+Date:   Tue Aug 23 07:26:01 2022 -0500
+
+    Updating delete account to also include username removal. Updated nav to display first/last name. Base for pending theme support.
+
+[33mcommit 86ee9e99ec2e36a78dc8ce2e6ec1c0d85cb44903[m
+Author: Mark <markthedev@gmail.com>
+Date:   Tue Aug 2 11:12:57 2022 -0500
+
+    Adding user profile route and view based on username.
+
+[33mcommit 7bc2ff0524f616fa2c7c975ee87a9f02037a0b10[m
+Author: Mark <markthedev@gmail.com>
+Date:   Mon Aug 1 06:08:23 2022 -0500
+
+    Hide links on forgot password for logged in users
+
+[33mcommit ea27c0b2e1c715ab85c84c45ab1c366297be689c[m
+Author: Mark <markthedev@gmail.com>
+Date:   Mon Aug 1 06:03:37 2022 -0500
+
+    Clean up UI and avatar display on admin dashboard.
+
+[33mcommit 9b2075934f97b734ec442374096d779cfe346eab[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sun Jul 31 09:45:01 2022 -0500
+
+    Fix success/error display on various settings
+
+[33mcommit 171e3489a7c65c9cb6c9d1017d59dc12644a6573[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sun Jul 31 09:35:30 2022 -0500
+
+    Updating packages, fixed error/success display, cleaned up settings page.
+
+[33mcommit 1cb799603db590cccaa8967998834b42a14e36d2[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sun Jul 31 08:18:02 2022 -0500
+
+    Updating firebase and form field verbiage on settings.
+
+[33mcommit 985bc67aa9dc7c8a6047eba0c3674abaf7314aee[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 30 11:47:56 2022 -0500
+
+    Handle submit button and label updating for in progress and completed uploads.
+
+[33mcommit 923f287e1c50ad954d68375b4502e696711f6b17[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 30 11:37:34 2022 -0500
+
+    Organize imports and update formatting.
+
+[33mcommit 8b05466b59f721c71cd28582cf5fe30a1396c279[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 30 11:29:57 2022 -0500
+
+    Accept .png, .jpg, .jpeg image types for now.
+
+[33mcommit 052c6382b593c2b5252beb2441e27f42c94ce8bf[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 30 11:24:14 2022 -0500
+
+    Resize avatar image and convert to jpeg and upload.
+
+[33mcommit cf68963b7d3475555d6e7d5c5dddc281ad419ed6[m
+Author: Mark <markthedev@gmail.com>
+Date:   Wed Jul 27 08:19:18 2022 -0500
+
+    Updating avatar preview and sizing. Fixed account drop down UI in main nav.
+
+[33mcommit 2f6d6412fb6c33700adcba393986de703e6ea338[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sun Jul 24 11:13:51 2022 -0500
+
+    Using message components and delete avatar on account deletion.
+
+[33mcommit 98b8ff3cd81c07d2a717a2cfad61da52de9ccc6d[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sun Jul 24 11:06:09 2022 -0500
+
+    Some minor clean up.
+
+[33mcommit fb93d20b194a2f2577bd84fc344b0dfd1aceb4da[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sun Jul 24 10:47:18 2022 -0500
+
+    Update read me.
+
+[33mcommit ab79a53015172be1e801e0ee1561877521691ef4[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sun Jul 24 10:45:40 2022 -0500
+
+    Adding in base user avatar upload.
+
+[33mcommit ab3407e87e79e45b815c2239ac971d1a95c7ff99[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 16 08:06:45 2022 -0500
+
+    Move react-scripts to a dev dependencies
+
+[33mcommit d2f5920f222ac3340b0f799e782aaaab5c047549[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 16 07:59:45 2022 -0500
+
+    Updating dependencies and documentation.
+
+[33mcommit 947f3820fba16aa59590dcd523aec26da4fce852[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 16 07:35:06 2022 -0500
+
+    Readme formatting.
+
+[33mcommit 55996b12e4c69f66e8959aafe71bdbe5ae617ce6[m
+Author: Mark <markthedev@gmail.com>
+Date:   Sat Jul 16 07:31:55 2022 -0500
+
+    Updating firebase verion and imports. Updating documentation and formatting.
+
+[33mcommit 11c379847f245f84bb298c05358030975225634c[m
+Author: Mark <markthedev@gmail.com>
+Date:   Wed Mar 2 13:22:49 2022 -0600
+
+    first commit
