@@ -91,7 +91,7 @@ const App = () => {
                 }
               />
               <Route
-                path={process.env.REACT_APP_VIEW_USER_PROFILE}
+                path={process.env.REACT_APP_VIEW_USER_PROFILE_ROUTE}
                 element={
                   <UserProfile />
                 }
