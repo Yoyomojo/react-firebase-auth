@@ -7,7 +7,6 @@ import Loader from './components/loader/Loader';
 import AdminRoute from './components/routing/AdminRoute';
 import PrivateRoute from './components/routing/PrivateRoute';
 import PublicRoute from './components/routing/PublicRoute';
-import { AuthProvider } from './firebase/context';
 import GlobalStyle from './theme/globalStyles';
 
 const Main = styled.main`
@@ -60,7 +59,6 @@ const UserProfile = lazy(() =>
 
 const App = () => {
   return (
-    <AuthProvider>
       <Suspense fallback={<Loader />}>
         <Navigation />
         <Main>
@@ -134,7 +132,6 @@ const App = () => {
         <Footer />
         <GlobalStyle />
       </Suspense>
-    </AuthProvider>
   );
 };
 
