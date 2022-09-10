@@ -5,8 +5,12 @@ import ErrorAlert from '../alerts/ErrorAlert';
 import SuccessAlert from '../alerts/SuccessAlert';
 import Button from '../form/Button';
 import Input from '../form/Input';
+import { useContext } from 'react';
+import { AuthContext } from '../../firebase/context';
 
 const UpdateUserPassword = () => {
+    const { user } = useContext(AuthContext);
+
     const { inputs, errors, passwordSuccess, passwordError, handleInputChange, handleUpdatePassword } = useForm({
         updatePassword: '',
         currentPassword: '',
@@ -24,7 +28,7 @@ const UpdateUserPassword = () => {
     return (
         <div className='row h-100'>
             <div className='col mb-3'>
-                <div className='card h-100'>
+                <div className={user && user.theme === 'light' ? 'card bg-light h-100' : 'card text-white bg-dark h-100'}>
                     <h5 className='card-header'>Change Password</h5>
                     <div className='card-body'>
                         {passwordSuccess.success ?

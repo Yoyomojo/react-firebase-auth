@@ -1,13 +1,18 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Footer from './components/global/Footer';
 import Navigation from './components/global/Navigation';
 import Loader from './components/loader/Loader';
 import AdminRoute from './components/routing/AdminRoute';
 import PrivateRoute from './components/routing/PrivateRoute';
 import PublicRoute from './components/routing/PublicRoute';
+import { AuthContext } from './firebase/context';
 import GlobalStyle from './theme/globalStyles';
+import {
+  light,
+  dark
+} from './theme/themes';
 
 const Main = styled.main`
   margin-top: 6rem;
@@ -58,7 +63,11 @@ const UserProfile = lazy(() =>
 );
 
 const App = () => {
+  const { user } = useContext(AuthContext);
+
   return (
+    <ThemeProvider theme={user && user.theme === 'light' ? light : dark}>
+      <GlobalStyle />
       <Suspense fallback={<Loader />}>
         <Navigation />
         <Main>
@@ -130,8 +139,8 @@ const App = () => {
           </div>
         </Main>
         <Footer />
-        <GlobalStyle />
       </Suspense>
+    </ThemeProvider>
   );
 };
 

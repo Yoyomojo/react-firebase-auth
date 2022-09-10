@@ -25,22 +25,22 @@ const ForgotPassword = () => {
         <>
             <div className='row'>
                 <div className='col-xl-5 col-lg-6 col-sm-12 col-xs-12 ms-auto me-auto'>
-                    <div className='card border-dark mb-3'>
+                    <div className={user && user.theme === 'light' ? 'card bg-light text-dark mb-3' : 'card text-white bg-dark mb-3'}>
                         <div className='card-header'>Reset Password</div>
-                        <div className='card-body text-dark'>
+                        <div className='card-body'>
                             <p className='card-text'>Reset your password below.</p>
                             {resetError && resetError.error ?
                                 <div className='alert alert-danger fade show' role='alert'>
                                     <strong>{resetError.error}</strong>
                                 </div>
-                            :
+                                :
                                 null
                             }
                             {resetSuccess && resetSuccess.success ?
                                 <div className='alert alert-success fade show' role='alert'>
                                     <strong>{resetSuccess.success}</strong>
                                 </div>
-                            :
+                                :
                                 null
                             }
                             <form id='reset-password-form' onSubmit={handlePasswordResetSubmit}>
@@ -81,7 +81,7 @@ const ForgotPassword = () => {
                                         <p className='text-center fw-normal fs-6 text-muted'>Already have an account? <Link to={process.env.REACT_APP_LOGIN_ROUTE}>Sign in</Link>.</p>
                                     </div>
                                 </div>
-                            :
+                                :
                                 null
                             }
                         </div>

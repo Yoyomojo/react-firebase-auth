@@ -28,7 +28,7 @@ const UserInformation = () => {
     return (
         <div className='row h-100'>
             <div className='col mb-3'>
-                <div className='card h-100'>
+                <div className={user && user.theme === 'light' ? 'card bg-light h-100' : 'card text-white bg-dark h-100'}>
                     <h5 className='card-header'>Personal Information</h5>
                     <div className='card-body'>
                         <div className='row'>

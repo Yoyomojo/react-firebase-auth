@@ -12,11 +12,11 @@ const rotate360 = keyframes`
 const Loader = styled.div`
   animation: ${rotate360} 1s linear infinite;
   transform: translateZ(0);
-  border-top: 2px solid grey;
-  border-right: 2px solid grey;
-  border-bottom: 2px solid grey;
-  border-left: 4px solid black;
-  background: #FFF;
+  border-top: 2px solid ${props => props.theme.text};
+  border-right: 2px solid ${props => props.theme.text};
+  border-bottom: 2px solid ${props => props.theme.text};
+  border-left: 4px solid ${props => props.theme.background};
+  background: ${props => props.theme.background};
   width: 50px;
   height: 50px;
   border-radius: 50%;

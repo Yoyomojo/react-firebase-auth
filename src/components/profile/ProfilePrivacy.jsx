@@ -10,7 +10,7 @@ const ProfilePrivacy = () => {
     const { handleProfilePrivacyToggle } = useForm({
         privacyToggle: privacy
     }, validate);
-        
+
     const togglePrivacy = () => {
         setPrivacy(!privacy);
         handleProfilePrivacyToggle(!privacy);
@@ -19,10 +19,10 @@ const ProfilePrivacy = () => {
     return (
         <div className='row h-100'>
             <div className='col mb-3'>
-                <div className='card h-100'>
+                <div className={user && user.theme === 'light' ? 'card bg-light h-100' : 'card text-white bg-dark h-100'}>
                     <h5 className='card-header'>Profile Privacy</h5>
                     <div className='card-body'>
-                        <p className='card-text'>Change your profile privacy.</p>
+                        <p className='card-text'>Change your profile privacy. Current setting <b className='text-capitalize'>{privacy ? 'Private' : 'Public'}</b>.</p>
                         <div className='form-check form-switch'>
                             <input className='form-check-input' type='checkbox' id='privacyToggle' name='privacyToggle' defaultChecked={!!privacy} onChange={togglePrivacy} />
                             <label className='form-check-label' htmlFor='privacyToggle'>{privacy ? 'Make Profile Public' : 'Make Profile Private'}</label>

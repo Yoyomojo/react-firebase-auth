@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AuthContext } from '../../firebase/context';
 import useForm from '../../util/useForm';
 import validate from '../../util/validateForm';
 import ErrorAlert from '../alerts/ErrorAlert';
@@ -5,6 +7,8 @@ import SuccessAlert from '../alerts/SuccessAlert';
 import Input from '../form/Input';
 
 const DeleteAccount = () => {
+    const { user } = useContext(AuthContext);
+
     const { inputs, errors, deleteAccountSuccess, deleteAccountError, handleInputChange, handleDeleteUserAccount } = useForm({
         deleteUserPassword: ''
     }, validate);
@@ -19,7 +23,7 @@ const DeleteAccount = () => {
 
     return (
         <div className='mb-3'>
-            <div className='card'>
+            <div className={user && user.theme === 'light' ? 'card bg-light mb-3' : 'card text-white bg-dark mb-3'}>
                 <h5 className='card-header text-white bg-danger'>Danger Zone!!!</h5>
                 <div className='card-body'>
                     <h4 className='card-text fw-bolder text-danger text-center mb-3'>Account deletion cannot be undone. All of your data will be removed.</h4>
