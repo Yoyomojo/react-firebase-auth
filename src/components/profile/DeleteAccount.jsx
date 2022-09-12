@@ -23,7 +23,7 @@ const DeleteAccount = () => {
 
     return (
         <div className='mb-3'>
-            <div className={user && user.theme === 'light' ? 'card bg-light mb-3' : 'card text-white bg-dark mb-3'}>
+            <div className={user && user.theme === 'dark' ? 'card bg-dark text-white h-100' : 'card bg-light h-100'}>
                 <h5 className='card-header text-white bg-danger'>Danger Zone!!!</h5>
                 <div className='card-body'>
                     <h4 className='card-text fw-bolder text-danger text-center mb-3'>Account deletion cannot be undone. All of your data will be removed.</h4>

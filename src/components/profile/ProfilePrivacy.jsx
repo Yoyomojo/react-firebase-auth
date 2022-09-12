@@ -19,7 +19,7 @@ const ProfilePrivacy = () => {
     return (
         <div className='row h-100'>
             <div className='col mb-3'>
-                <div className={user && user.theme === 'light' ? 'card bg-light h-100' : 'card text-white bg-dark h-100'}>
+                <div className={user && user.theme === 'dark' ? 'card bg-dark text-white h-100' : 'card bg-light h-100'}>
                     <h5 className='card-header'>Profile Privacy</h5>
                     <div className='card-body'>
                         <p className='card-text'>Change your profile privacy. Current setting <b className='text-capitalize'>{privacy ? 'Private' : 'Public'}</b>.</p>

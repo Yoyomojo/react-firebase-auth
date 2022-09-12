@@ -66,7 +66,7 @@ const App = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <ThemeProvider theme={user && user.theme === 'light' ? light : dark}>
+    <ThemeProvider theme={user && user.theme === 'dark' ? dark : light}>
       <GlobalStyle />
       <Suspense fallback={<Loader />}>
         <Navigation />

@@ -6,7 +6,7 @@ const Navigation = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <nav className={user && user.theme === 'light' ? 'navbar navbar-expand-lg navbar-light bg-light fixed-top' : 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top'}>
+        <nav className={user && user.theme === 'dark' ? 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top' : 'navbar navbar-expand-lg navbar-light bg-light fixed-top'}>
             <div className='container-fluid'>
                 <Link className='navbar-brand' to='/'>{process.env.REACT_APP_SITE_NAME}</Link>
                 <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
@@ -23,7 +23,7 @@ const Navigation = () => {
                             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
                                 <li className='nav-item dropdown' data-toggle='dropdown'>
                                     <NavLink className='nav-link dropdown-toggle' to='/' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                                        <img src={user.avatar ? user.avatar : process.env.REACT_APP_DEFAULT_AVATAR_URL} alt='User Avatar' className={user && user.theme === 'light' ? 'me-2 rounded-circle border border-5 border-dark': 'me-2 rounded-circle border border-5 border-light'} width='50' height='50' /> <span className='text-capitalize'>{user.firstName + ' '+ user.lastName}</span>
+                                        <img src={user.avatar ? user.avatar : process.env.REACT_APP_DEFAULT_AVATAR_URL} alt='User Avatar' className={user && user.theme === 'dark' ? 'me-2 rounded-circle border border-5 border-light': 'me-2 rounded-circle border border-5 border-dark'} width='50' height='50' /> <span className='text-capitalize'>{user.firstName + ' '+ user.lastName}</span>
                                     </NavLink>
                                     <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
                                         {user && user.active === true ?
