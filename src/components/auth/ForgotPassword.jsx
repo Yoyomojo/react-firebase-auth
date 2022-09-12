@@ -25,7 +25,7 @@ const ForgotPassword = () => {
         <>
             <div className='row'>
                 <div className='col-xl-5 col-lg-6 col-sm-12 col-xs-12 ms-auto me-auto'>
-                    <div className={user && user.theme === 'dark' ? 'card bg-dark text-light mb-3' : 'card text-dark bg-light mb-3'}>
+                    <div className={user && user.theme === 'dark' ? 'card bg-dark text-light mb-3' : 'card text-dark mb-3'}>
                         <div className='card-header'>Reset Password</div>
                         <div className='card-body'>
                             <p className='card-text'>Reset your password below.</p>
