@@ -22,7 +22,7 @@ const Login = () => {
         <>
             <div className='row'>
                 <div className='col-xl-5 col-lg-10 col-sm-12 col-xs-12 ms-auto me-auto'>
-                    <div className='card border-dark mb-3'>
+                    <div className='card border-dark bg-light mb-3'>
                         <div className='card-header'>Sign In</div>
                         <div className='card-body text-dark'>
                             <h5 className='card-title'>Welcome!</h5>
