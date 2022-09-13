@@ -10,17 +10,17 @@ Included is a file named .env.example which includes items for your Firebase pro
 
 **.env.example**
 
+## Application Details
 REACT_APP_SITE_NAME=Site Name
 
 REACT_APP_DEFAULT_AVATAR_URL=/img/react-logo.png
 
-`##` Firebase API Configs`
-
+## Firebase API Configs
 REACT_APP_API_KEY=
 
 REACT_APP_AUTH_DOMAIN=
 
-REACT_APP_PROECT_ID=
+REACT_APP_PROJECT_ID=
 
 REACT_APP_STORAGE_BUCKET=
 
@@ -30,14 +30,12 @@ REACT_APP_APP_ID=
 
 REACT_APP_MEASUREMENT_ID=
 
-`##` Roles
-
+## Roles
 REACT_APP_ADMIN_TITLE=admin
 
 REACT_APP_USER_TITLE=user
 
-`##` Routes
-
+## Routes
 REACT_APP_LOGIN_ROUTE=/login
 
 REACT_APP_LOGOUT_ROUTE=/logout
@@ -54,7 +52,7 @@ REACT_APP_MANAGE_USERS_ROUTE=/manage-users
 
 REACT_APP_USER_SETTINGS_ROUTE=/settings
 
-REACT_APP_VIEW_USER_PROFILE=/:username
+REACT_APP_VIEW_USER_PROFILE_ROUTE=/:username
 
 
 ### 2. Update Your Firebase Firestore Rules for the Users Table and Admin privileges and usernames table
@@ -120,7 +118,8 @@ This app uses the following packages:
 
 ### Some Base Page Templates are Included as are Private, Public, and Admin Route Components
 
-  
+- Dark/Light Theme Support
+
 - Global Navigation
 
 - Global Footer
