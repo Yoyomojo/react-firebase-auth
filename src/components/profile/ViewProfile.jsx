@@ -1,9 +1,12 @@
 import useGetUserProfile from '../../api/profile/getUserProfile';
 import { useParams } from 'react-router-dom';
 import Loader from '../loader/Loader';
+import { AuthContext } from '../../firebase/context';
+import { useContext } from 'react';
 
 const ViewProfile = () => {
     const username = useParams();
+    const { user } = useContext(AuthContext);
 
     const { profileUser, isLoading } = useGetUserProfile(username.username);
 
@@ -16,7 +19,7 @@ const ViewProfile = () => {
                 <>
                     <div className='row mb-3'>
                         <div className='col text-center'>
-                            <img src={profileUser.avatar ? profileUser.avatar : process.env.REACT_APP_DEFAULT_AVATAR_URL} alt='Avatar' className='rounded-circle border border-5 border-dark' width='120' height='120' />
+                            <img src={profileUser.avatar ? profileUser.avatar : process.env.REACT_APP_DEFAULT_AVATAR_URL} alt='Avatar' className={user && user.theme === 'dark' ? 'rounded-circle border border-5 border-light' : 'rounded-circle border border-5 border-dark'} width='120' height='120' />
                             <h1><span className='text-capitalize fw-bold'>{profileUser.username}</span></h1>
                         </div>
                     </div>
