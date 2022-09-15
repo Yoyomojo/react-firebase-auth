@@ -111,7 +111,6 @@ const useForm = (initialValues, validate) => {
         const validationErrors = validate(inputs);
         const noErrors = Object.keys(validationErrors).length === 0;
         setErrors(validationErrors);
-        console.log(validationErrors);
         if (noErrors) {
             deleteUserAccount(event);
         } else {
