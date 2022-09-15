@@ -25,7 +25,7 @@ const ProfileTheme = () => {
                         <p className='card-text'>Change your site theme. Current theme <b className='text-capitalize'>{theme}</b>.</p>
                         <div className='form-check form-switch'>
                             <input className='form-check-input' type='checkbox' id='themeToggle' name='themeToggle' defaultChecked={theme === 'light' ? false : true} onChange={toggleTheme} />
-                            <label className='form-check-label' htmlFor='themeToggle'>{theme === 'light' ? 'Light' : 'Dark'}</label>
+                            <label className='form-check-label' htmlFor='themeToggle'>{theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}</label>
                         </div>
                     </div>
                 </div>
